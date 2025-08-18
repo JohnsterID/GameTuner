@@ -1,0 +1,154 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>GameTuner.Framework</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <UseWindowsForms>True</UseWindowsForms>
+    <TargetFramework>net35</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>3</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>GameTuner.Framework</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="GameTuner.Framework.Resources.tooltip.bmp" />
+    <None Remove="GameTuner.Framework.Resources.caption.bmp" />
+    <None Remove="GameTuner.Framework.Resources.splitter.bmp" />
+    <None Remove="GameTuner.Framework.Resources.userscroll.bmp" />
+    <None Remove="GameTuner.Framework.Resources.scrollablelist.bmp" />
+    <None Remove="GameTuner.Framework.Resources.access_level.png" />
+    <None Remove="GameTuner.Framework.Resources.appwindow_info_annotation.png" />
+    <None Remove="GameTuner.Framework.Resources.asset_add.png" />
+    <None Remove="GameTuner.Framework.Resources.asset_anim.png" />
+    <None Remove="GameTuner.Framework.Resources.asset_del.png" />
+    <None Remove="GameTuner.Framework.Resources.asset_mesh.png" />
+    <None Remove="GameTuner.Framework.Resources.asset_texture.png" />
+    <None Remove="GameTuner.Framework.Resources.graph_append.png" />
+    <None Remove="GameTuner.Framework.Resources.graph_level.png" />
+    <None Remove="GameTuner.Framework.Resources.graph_level1.png" />
+    <None Remove="GameTuner.Framework.Resources.graph_link.png" />
+    <None Remove="GameTuner.Framework.Resources.graph_remove.png" />
+    <None Remove="GameTuner.Framework.Resources.graph_zoom.png" />
+    <None Remove="GameTuner.Framework.Resources.graph_zoom1.png" />
+    <None Remove="GameTuner.Framework.Resources.graph_zoom2.png" />
+    <None Remove="GameTuner.Framework.Resources.icon_dir.png" />
+    <None Remove="GameTuner.Framework.Resources.icon_height.png" />
+    <None Remove="GameTuner.Framework.Resources.icon_move.png" />
+    <None Remove="GameTuner.Framework.Resources.icon_radius.png" />
+    <None Remove="GameTuner.Framework.Resources.icon_width.png" />
+    <None Remove="GameTuner.Framework.Resources.lock_lock.png" />
+    <None Remove="GameTuner.Framework.Resources.lock_unlock.png" />
+    <None Remove="GameTuner.Framework.Resources.multi_windows.png" />
+    <None Remove="GameTuner.Framework.Resources.object_node1.png" />
+    <None Remove="GameTuner.Framework.Resources.object_node2.png" />
+    <None Remove="GameTuner.Framework.Resources.object_node3.png" />
+    <None Remove="GameTuner.Framework.Resources.object_node4.png" />
+    <None Remove="GameTuner.Framework.Resources.or_man.png" />
+    <None Remove="GameTuner.Framework.Resources.or_man_select.png" />
+    <None Remove="GameTuner.Framework.Resources.panel_edit.png" />
+    <None Remove="GameTuner.Framework.Resources.panel_open.png" />
+    <None Remove="GameTuner.Framework.Resources.panel_save.png" />
+    <None Remove="GameTuner.Framework.Resources.prop_alphabetical.png" />
+    <None Remove="GameTuner.Framework.Resources.prop_category.png" />
+    <None Remove="GameTuner.Framework.Resources.slider_nub.png" />
+    <None Remove="GameTuner.Framework.Resources.star_man.png" />
+    <None Remove="GameTuner.Framework.Resources.star_man_select.png" />
+    <None Remove="GameTuner.Framework.Resources.time_key0.png" />
+    <None Remove="GameTuner.Framework.Resources.time_key1.png" />
+    <None Remove="GameTuner.Framework.Resources.time_key2.png" />
+    <None Remove="GameTuner.Framework.Resources.time_keysel.png" />
+    <None Remove="GameTuner.Framework.Resources.time_shuttle.png" />
+    <None Remove="GameTuner.Framework.Resources.tree_close.png" />
+    <None Remove="GameTuner.Framework.Resources.tree_open.png" />
+    <None Remove="GameTuner.Framework.Resources.user_legend.png" />
+    <None Remove="GameTuner.Framework.Resources.version_task.png" />
+    <None Remove="GameTuner.Framework.Resources.ver_new.png" />
+    <None Remove="GameTuner.Framework.Resources.ver_none.png" />
+    <None Remove="GameTuner.Framework.Resources.ver_ok.png" />
+    <None Remove="GameTuner.Framework.Resources.ver_old.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.tooltip.bmp" LogicalName="GameTuner.Framework.Resources.tooltip.bmp" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.caption.bmp" LogicalName="GameTuner.Framework.Resources.caption.bmp" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.splitter.bmp" LogicalName="GameTuner.Framework.Resources.splitter.bmp" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.userscroll.bmp" LogicalName="GameTuner.Framework.Resources.userscroll.bmp" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.scrollablelist.bmp" LogicalName="GameTuner.Framework.Resources.scrollablelist.bmp" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.access_level.png" LogicalName="GameTuner.Framework.Resources.access_level.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.appwindow_info_annotation.png" LogicalName="GameTuner.Framework.Resources.appwindow_info_annotation.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.asset_add.png" LogicalName="GameTuner.Framework.Resources.asset_add.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.asset_anim.png" LogicalName="GameTuner.Framework.Resources.asset_anim.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.asset_del.png" LogicalName="GameTuner.Framework.Resources.asset_del.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.asset_mesh.png" LogicalName="GameTuner.Framework.Resources.asset_mesh.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.asset_texture.png" LogicalName="GameTuner.Framework.Resources.asset_texture.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.graph_append.png" LogicalName="GameTuner.Framework.Resources.graph_append.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.graph_level.png" LogicalName="GameTuner.Framework.Resources.graph_level.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.graph_level1.png" LogicalName="GameTuner.Framework.Resources.graph_level1.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.graph_link.png" LogicalName="GameTuner.Framework.Resources.graph_link.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.graph_remove.png" LogicalName="GameTuner.Framework.Resources.graph_remove.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.graph_zoom.png" LogicalName="GameTuner.Framework.Resources.graph_zoom.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.graph_zoom1.png" LogicalName="GameTuner.Framework.Resources.graph_zoom1.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.graph_zoom2.png" LogicalName="GameTuner.Framework.Resources.graph_zoom2.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.icon_dir.png" LogicalName="GameTuner.Framework.Resources.icon_dir.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.icon_height.png" LogicalName="GameTuner.Framework.Resources.icon_height.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.icon_move.png" LogicalName="GameTuner.Framework.Resources.icon_move.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.icon_radius.png" LogicalName="GameTuner.Framework.Resources.icon_radius.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.icon_width.png" LogicalName="GameTuner.Framework.Resources.icon_width.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.lock_lock.png" LogicalName="GameTuner.Framework.Resources.lock_lock.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.lock_unlock.png" LogicalName="GameTuner.Framework.Resources.lock_unlock.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.multi_windows.png" LogicalName="GameTuner.Framework.Resources.multi_windows.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.object_node1.png" LogicalName="GameTuner.Framework.Resources.object_node1.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.object_node2.png" LogicalName="GameTuner.Framework.Resources.object_node2.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.object_node3.png" LogicalName="GameTuner.Framework.Resources.object_node3.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.object_node4.png" LogicalName="GameTuner.Framework.Resources.object_node4.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.or_man.png" LogicalName="GameTuner.Framework.Resources.or_man.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.or_man_select.png" LogicalName="GameTuner.Framework.Resources.or_man_select.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.panel_edit.png" LogicalName="GameTuner.Framework.Resources.panel_edit.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.panel_open.png" LogicalName="GameTuner.Framework.Resources.panel_open.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.panel_save.png" LogicalName="GameTuner.Framework.Resources.panel_save.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.prop_alphabetical.png" LogicalName="GameTuner.Framework.Resources.prop_alphabetical.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.prop_category.png" LogicalName="GameTuner.Framework.Resources.prop_category.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.slider_nub.png" LogicalName="GameTuner.Framework.Resources.slider_nub.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.star_man.png" LogicalName="GameTuner.Framework.Resources.star_man.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.star_man_select.png" LogicalName="GameTuner.Framework.Resources.star_man_select.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.time_key0.png" LogicalName="GameTuner.Framework.Resources.time_key0.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.time_key1.png" LogicalName="GameTuner.Framework.Resources.time_key1.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.time_key2.png" LogicalName="GameTuner.Framework.Resources.time_key2.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.time_keysel.png" LogicalName="GameTuner.Framework.Resources.time_keysel.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.time_shuttle.png" LogicalName="GameTuner.Framework.Resources.time_shuttle.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.tree_close.png" LogicalName="GameTuner.Framework.Resources.tree_close.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.tree_open.png" LogicalName="GameTuner.Framework.Resources.tree_open.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.user_legend.png" LogicalName="GameTuner.Framework.Resources.user_legend.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.version_task.png" LogicalName="GameTuner.Framework.Resources.version_task.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.ver_new.png" LogicalName="GameTuner.Framework.Resources.ver_new.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.ver_none.png" LogicalName="GameTuner.Framework.Resources.ver_none.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.ver_ok.png" LogicalName="GameTuner.Framework.Resources.ver_ok.png" />
+    <EmbeddedResource Include="GameTuner.Framework.Resources.ver_old.png" LogicalName="GameTuner.Framework.Resources.ver_old.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Explicitly include all .resx files -->
+    <EmbeddedResource Include="GameTuner.Framework.Properties.Resources.resx">
+      <LogicalName>GameTuner.Framework.Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GameTuner.Framework.ExceptionLogControl.resx" />
+    <EmbeddedResource Include="GameTuner.Framework.ValidatePanel.resx" />
+    <EmbeddedResource Include="GameTuner.Framework.CollapsablePanel.resx" />
+    <EmbeddedResource Include="GameTuner.Framework.BuildProcess.BuildResultsPanel.resx" />
+    <EmbeddedResource Include="GameTuner.Framework.ExploreFileList.resx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <!-- Disable automatic inclusion of .resx files to avoid duplicates -->
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Exclude backup files from compilation -->
+    <Compile Remove="**/*_Original.cs" />
+    <Compile Remove="**/*_Original_P4API.cs" />
+  </ItemGroup>
+</Project>
