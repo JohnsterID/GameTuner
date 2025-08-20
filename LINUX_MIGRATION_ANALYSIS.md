@@ -200,12 +200,12 @@ GameTuner Main Window (944x564)
 - **Menu Bar**: File, Connection, Admin, Help (matches current implementation)
 - **Status Bar**: Shows connection status ("Disconnected" / "Connected")
 
-### Tab Structure (11+ tabs visible)
+### Tab Structure (13+ tabs visible)
 1. **Lua Console** - Command-line interface with console output and input
 2. **Active Player** - Complex game tuning interface (primary focus)
-3. **Audio Logging** - Audio-related logging controls
-4. **Audio** - Audio system controls
-5. **Game** - General game controls
+3. **Audio Logging** - Audio-related logging controls  
+4. **Audio** - Complex audio control interface with listener position, soundscapes, 2D/3D sound scripts
+5. **Game** - Autoplay controls, win conditions, game speed management
 6. **Lua Mem Tracking** - Memory tracking for Lua
 7. **Map** - Map-related controls
 8. **Players** - Player management
@@ -213,7 +213,10 @@ GameTuner Main Window (944x564)
 10. **Selected Unit** - Unit-specific controls
 11. **Table Browser** - Data table browser
 12. **Network** - Network-related controls
-13. **"* New Panel *"** - Panel creator tab
+13. **"* New Panel *"** - Panel creator tab with sophisticated dialog system
+
+### Critical UI Behavior Discovery
+**Connection-Dependent Tab Visibility**: Screenshots reveal that tabs 2-13 (all except Lua Console and New Panel) are **only visible when connected**. This is a critical architectural requirement for the Avalonia implementation.
 
 ### Active Player Tab Components (Most Complex)
 - **Tech Controls**: Grant All Techs, Remove All Techs, Grant All Techs (All Players), etc.
@@ -228,13 +231,133 @@ GameTuner Main Window (944x564)
 - **Building Controls**: "Recall Building Maint" button
 - **Action Button**: "Add One Tech"
 
-### Control Types Identified
-1. **ActionButton**: Simple command buttons (Grant All Techs, etc.)
-2. **ValueControl**: Input field + associated buttons (Gold, Research ID, etc.)
-3. **GroupedControls**: Related buttons grouped together (Era Techs)
-4. **ComboBox**: Dropdown selections (Lua State selector)
-5. **TextInput**: Command input, value inputs
-6. **ConsoleOutput**: Rich text display with syntax highlighting
+### Audio Tab Components
+- **Listener Position**: X, Y, Z coordinate controls
+- **Grid Distance**: To Surface, To Selected controls
+- **Soundscapes**: Multiple audio channels (Front Left/Right, Center, Sub, Rear Left/Right, Center Left/Right)
+- **2D Sound Script Table**: Filename, Variation, Volume, Streaming columns
+- **3D Sound Script Table**: Filename, Variation, Volume, Min. Dist., Max. Dist., Streaming columns
+- **Audio Controls**: Play Next Song, Toggle War, Song Playing field
+- **Volume Controls**: Music, Effects, Leader, Ambience volume sliders
+- **Position Controls**: Upper/Lower Left, Center controls
+- **Game Speed Modifier**: Speed adjustment controls
+
+### Game Tab Components
+- **Autoplay Controls**: Buttons for 1, 5, 10, 50, 100, 150, 200, 300 turns
+- **Autoplay Configuration**: "Return After Autoplay As..." text area, "Autoplay Turns:" input field
+- **Win Conditions**: Win Game buttons for Time, Tech, Domination, Culture, Diplomacy
+- **Control Actions**: "Stop AutoPlay" button
+
+### Panel Creator Dialog Components
+- **Panel Name**: Text input field for naming custom panels
+- **Panel Type Checkboxes**: 
+  - Main State, Automation Monitor, Tool Tips
+  - Legal Screen, Options Menu, Load Menu  
+  - Load Tutorial, Select Civilization, Select Game Speed
+- **Navigation**: "On Enter", "On Exit" buttons
+- **Actions**: "OK", "Cancel" buttons
+
+### Control Types Identified (Mapped to Original Code)
+
+1. **ActionButton** (`ActionButton.cs`): Simple command buttons 
+   - Examples: "Grant All Techs", "1000 Gold", "Win Game - Tech"
+   - Original: `public class ActionButton : Button, ICustomControl`
+   - Contains: Text, Tag (Lua action), Location, Context menu
+
+2. **ValueControl** (`ValueControl.cs`): Input field + label combinations
+   - Examples: Gold input field, Research ID field, Autoplay Turns field
+   - Original: `public class ValueControl : Panel, ICustomControl`
+   - Variants: `StringControl`, `IntegerControl`, `FloatControl`, `BooleanControl`
+   - Contains: Label, TextBox, Get/Set functions for Lua integration
+
+3. **CustomUI Panels** (`CustomUI.cs`): Dynamic panel system
+   - Examples: Active Player tab, Audio tab, Game tab
+   - Original: `public class CustomUI : Panel`
+   - Contains: Collections of ActionButtons and ValueControls
+   - Supports: Save/Load, Edit mode, Context menus
+
+4. **Specialized Controls**:
+   - **LuaConsole** (`LuaConsole.cs`): Rich text console with syntax highlighting
+   - **TableView** (`TableView.cs`): Data grid displays
+   - **MultiselectList** (`MultiselectList.cs`): Multi-selection lists
+   - **DataView** (`DataView.cs`): Data browsing interface
+
+### Original Code Architecture Mapping
+
+**Main Form Structure** (`frmMainForm.cs`):
+- TabControl with dynamic tab creation
+- Connection-dependent tab visibility logic
+- LuaStateManager integration
+- Panel configuration persistence
+
+**Panel System** (`CustomUI.cs`, `PanelBuilder.cs`):
+- Dynamic UI generation from XML data
+- ActionButton and ValueControl factories
+- Context menu system for editing
+- Lua function binding system
+
+**Control Builders**:
+- `ActionBuilder.cs`: Creates ActionButton configurations
+- `ValueControlBuilder.cs`: Creates ValueControl configurations  
+- `PanelBuilder.cs`: Creates entire panel configurations
+
+## Screenshot-to-Code Mapping Summary
+
+**✅ SUCCESSFULLY MAPPED**: The detailed UI analysis from screenshots has been successfully mapped to the original Windows Forms code:
+
+1. **Tab Structure**: Screenshots showing 13+ tabs → `frmMainForm.cs` TabControl with dynamic tab creation
+2. **Connection Behavior**: Screenshots showing tabs 2-13 only visible when connected → Connection-dependent visibility logic in main form
+3. **Active Player Controls**: Screenshots showing tech/resource buttons → `ActionButton.cs` and `ValueControl.cs` implementations
+4. **Panel Creator Dialog**: Screenshots showing sophisticated dialog → `PanelBuilder.cs` and panel configuration system
+5. **Control Types**: All UI elements identified in screenshots map to specific C# classes:
+   - Buttons → `ActionButton.cs`
+   - Input fields → `ValueControl.cs` variants (`StringControl`, `IntegerControl`, etc.)
+   - Console → `LuaConsole.cs`
+   - Tables → `TableView.cs`
+
+**Key Discovery**: The original GameTuner uses a sophisticated **dynamic panel system** where UI layouts are stored as XML data and reconstructed at runtime using control factories. This explains the complex, data-driven nature of the interface seen in the screenshots.
+
+## GameTuner.Framework Dependency Analysis
+
+### ✅ CAN BE REMOVED - Minimal Framework Usage
+
+**Analysis Result**: GameTuner uses only **4 classes** from the massive GameTuner.Framework:
+
+1. **ErrorHandling** - Simple error reporting and logging
+2. **GenericObjectSerializer** - XML serialization wrapper  
+3. **SocketConnection** - TCP socket communication base class
+4. **ApplicationHelper** - Version info from Windows Registry
+
+### Framework Classes Actually Used:
+
+```csharp
+// ErrorHandling.cs - 300+ lines, but only uses:
+ErrorHandling.Error(exception, message, level)
+ErrorHandling.AppName = "GameTuner"
+ErrorHandling.AppVersion = version
+ErrorHandling.CatchUnhandledExceptions()
+
+// GenericObjectSerializer.cs - 80 lines, XML serialization helper
+new GenericObjectSerializer(data) // For clipboard copy/paste
+
+// SocketConnection.cs - 150+ lines, TCP socket base class  
+Connection : SocketConnection // GameTuner's network connection
+
+// ApplicationHelper.cs - 40 lines, Windows Registry version lookup
+ApplicationHelper.ProductVersion // Gets version from registry
+```
+
+### ✅ Easy Migration Strategy:
+
+1. **ErrorHandling** → Replace with simple logging (Serilog, NLog, or built-in ILogger)
+2. **GenericObjectSerializer** → Replace with System.Text.Json or keep minimal XML version
+3. **SocketConnection** → Replace with modern .NET networking (TcpClient, or keep minimal version)
+4. **ApplicationHelper** → Replace with Assembly.GetExecutingAssembly().GetName().Version
+
+### 🎯 Migration Impact:
+- **Remove**: 23 directories, 200+ files, thousands of lines of Windows-specific Framework code
+- **Keep**: ~4 small classes (500 lines total) that can be easily cross-platform adapted
+- **Benefit**: Massive reduction in complexity, Windows dependencies, and maintenance burden
 
 ## Implementation Progress
 

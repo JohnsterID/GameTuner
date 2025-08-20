@@ -90,12 +90,47 @@
 
         <!-- Main Content Area - Tab Control -->
         <TabControl x:Name="MainTabControl">
+            <!-- Always visible tabs -->
             <TabItem Header="Lua Console">
                 <views:LuaConsoleView DataContext="{Binding LuaConsoleViewModel}" />
             </TabItem>
-            <TabItem Header="Active Player">
+            
+            <!-- Connection-dependent tabs (only visible when connected) -->
+            <TabItem Header="Active Player" IsVisible="{Binding IsConnected}">
                 <views:ActivePlayerView DataContext="{Binding ActivePlayerViewModel}" />
             </TabItem>
+            <TabItem Header="Audio Logging" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Audio Logging - TODO: Implement" Margin="10" />
+            </TabItem>
+            <TabItem Header="Audio" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Audio Controls - TODO: Implement" Margin="10" />
+            </TabItem>
+            <TabItem Header="Game" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Game Controls - TODO: Implement" Margin="10" />
+            </TabItem>
+            <TabItem Header="Lua Mem Tracking" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Lua Memory Tracking - TODO: Implement" Margin="10" />
+            </TabItem>
+            <TabItem Header="Map" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Map Controls - TODO: Implement" Margin="10" />
+            </TabItem>
+            <TabItem Header="Players" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Player Management - TODO: Implement" Margin="10" />
+            </TabItem>
+            <TabItem Header="Selected City" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Selected City - TODO: Implement" Margin="10" />
+            </TabItem>
+            <TabItem Header="Selected Unit" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Selected Unit - TODO: Implement" Margin="10" />
+            </TabItem>
+            <TabItem Header="Table Browser" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Table Browser - TODO: Implement" Margin="10" />
+            </TabItem>
+            <TabItem Header="Network" IsVisible="{Binding IsConnected}">
+                <TextBlock Text="Network Controls - TODO: Implement" Margin="10" />
+            </TabItem>
+            
+            <!-- Always visible panel creator -->
             <TabItem Header="* New Panel *">
                 <views:PanelCreatorView DataContext="{Binding PanelCreatorViewModel}" />
             </TabItem>
