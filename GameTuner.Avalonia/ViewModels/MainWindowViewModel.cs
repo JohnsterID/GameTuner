@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -10,6 +11,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private string connectionStatus = "Disconnected";
 
+    [ObservableProperty]
+    private bool isConnected = false;
+
     public LuaConsoleViewModel LuaConsoleViewModel { get; } = new();
     public ActivePlayerViewModel ActivePlayerViewModel { get; } = new();
     public PanelCreatorViewModel PanelCreatorViewModel { get; } = new();
@@ -17,6 +21,16 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         // Initialize view models
+        // Connection status change handler
+        PropertyChanged += OnPropertyChanged;
+    }
+
+    private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(ConnectionStatus))
+        {
+            IsConnected = ConnectionStatus == "Connected";
+        }
     }
 
     // Menu Commands
@@ -55,6 +69,8 @@ public partial class MainWindowViewModel : ViewModelBase
     private void ChangeConnection()
     {
         // TODO: Implement connection change dialog
+        // For now, toggle connection for testing
+        ConnectionStatus = ConnectionStatus == "Connected" ? "Disconnected" : "Connected";
     }
 
     [RelayCommand]
