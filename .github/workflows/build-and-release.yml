@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-windows:
-    runs-on: windows-latest
+    runs-on: windows-2022
     
     steps:
       - name: Checkout code
@@ -137,62 +137,3 @@ jobs:
             - `VERSION.txt` - Build and version information
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  build-mono-linux:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        
-      - name: Setup Mono
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y mono-complete
-
-      - name: Cache NuGet packages
-        uses: actions/cache@v4
-        with:
-          path: ~/.nuget/packages
-          key: nuget-linux-${{ hashFiles('**/*.csproj') }}
-          restore-keys: |
-            nuget-linux-
-          
-      - name: Verify Mono installation
-        run: |
-          mono --version
-          mcs --version
-          
-      - name: Build with Mono
-        run: |
-          xbuild GameTuner.sln /p:Configuration=Release /p:TargetFrameworkVersion=v3.5
-          
-      - name: Test Mono compatibility
-        run: |
-          echo "Testing Mono compatibility"
-          exe_path=$(find GameTuner/bin -name "GameTuner.exe" -type f | head -1)
-          dll_path=$(find GameTuner.Framework/bin -name "GameTuner.Framework.dll" -type f | head -1)
-
-          if [ -n "$exe_path" ] && [ -f "$exe_path" ]; then
-            echo "GameTuner.exe built at $exe_path"
-            file "$exe_path"
-          else
-            echo "ERROR: GameTuner.exe not found"
-            exit 1
-          fi
-
-          if [ -n "$dll_path" ] && [ -f "$dll_path" ]; then
-            echo "GameTuner.Framework.dll built at $dll_path"
-            file "$dll_path"
-          else
-            echo "WARNING: GameTuner.Framework.dll not found"
-          fi
-
-      - name: Upload Mono build artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: gametuner-mono-linux-net35
-          path: |
-            GameTuner/bin/
-            GameTuner.Framework/bin/
-          retention-days: 90
