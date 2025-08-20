@@ -1,0 +1,130 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Dark Theme Colors -->
+    <Style>
+        <Style.Resources>
+            <!-- Background Colors -->
+            <SolidColorBrush x:Key="DarkBackground">#FF000000</SolidColorBrush>
+            <SolidColorBrush x:Key="DarkSurface">#FF1E1E1E</SolidColorBrush>
+            <SolidColorBrush x:Key="DarkSurfaceVariant">#FF2D2D2D</SolidColorBrush>
+            
+            <!-- Text Colors -->
+            <SolidColorBrush x:Key="DarkOnBackground">#FFFFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="DarkOnSurface">#FFFFFFFF</SolidColorBrush>
+            <SolidColorBrush x:Key="DarkOnSurfaceVariant">#FFCCCCCC</SolidColorBrush>
+            
+            <!-- Accent Colors -->
+            <SolidColorBrush x:Key="DarkPrimary">#FF0078D4</SolidColorBrush>
+            <SolidColorBrush x:Key="DarkPrimaryVariant">#FF106EBE</SolidColorBrush>
+            <SolidColorBrush x:Key="DarkSecondary">#FF4A90E2</SolidColorBrush>
+            
+            <!-- Border Colors -->
+            <SolidColorBrush x:Key="DarkBorder">#FF404040</SolidColorBrush>
+            <SolidColorBrush x:Key="DarkBorderVariant">#FF606060</SolidColorBrush>
+        </Style.Resources>
+    </Style>
+
+    <!-- Window Style -->
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{DynamicResource DarkSurface}" />
+        <Setter Property="Foreground" Value="{DynamicResource DarkOnSurface}" />
+    </Style>
+
+    <!-- TabControl Style -->
+    <Style Selector="TabControl">
+        <Setter Property="Background" Value="{DynamicResource DarkBackground}" />
+    </Style>
+    
+    <Style Selector="TabItem">
+        <Setter Property="Background" Value="{DynamicResource DarkSurface}" />
+        <Setter Property="Foreground" Value="{DynamicResource DarkOnSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DarkBorder}" />
+        <Setter Property="BorderThickness" Value="1,1,1,0" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="Margin" Value="0,0,2,0" />
+    </Style>
+    
+    <Style Selector="TabItem:selected">
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    
+    <Style Selector="TabItem:pointerover">
+        <Setter Property="Background" Value="{DynamicResource DarkSurfaceVariant}" />
+    </Style>
+
+    <!-- Button Style -->
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{DynamicResource DarkSurfaceVariant}" />
+        <Setter Property="Foreground" Value="{DynamicResource DarkOnSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DarkBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="8,4" />
+        <Setter Property="Margin" Value="2" />
+    </Style>
+    
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="{DynamicResource DarkBorderVariant}" />
+    </Style>
+    
+    <Style Selector="Button:pressed">
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}" />
+    </Style>
+
+    <!-- TextBox Style -->
+    <Style Selector="TextBox">
+        <Setter Property="Background" Value="{DynamicResource DarkBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource DarkOnBackground}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DarkBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="4,2" />
+        <Setter Property="FontFamily" Value="Consolas, Monaco, 'Courier New', monospace" />
+    </Style>
+    
+    <Style Selector="TextBox:focus">
+        <Setter Property="BorderBrush" Value="{DynamicResource DarkPrimary}" />
+    </Style>
+
+    <!-- ComboBox Style -->
+    <Style Selector="ComboBox">
+        <Setter Property="Background" Value="{DynamicResource DarkSurfaceVariant}" />
+        <Setter Property="Foreground" Value="{DynamicResource DarkOnSurface}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource DarkBorder}" />
+        <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <!-- Menu Style -->
+    <Style Selector="Menu">
+        <Setter Property="Background" Value="{DynamicResource DarkSurface}" />
+        <Setter Property="Foreground" Value="{DynamicResource DarkOnSurface}" />
+    </Style>
+    
+    <Style Selector="MenuItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource DarkOnSurface}" />
+        <Setter Property="Padding" Value="8,4" />
+    </Style>
+    
+    <Style Selector="MenuItem:selected">
+        <Setter Property="Background" Value="{DynamicResource DarkPrimary}" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <!-- Border Style -->
+    <Style Selector="Border">
+        <Setter Property="BorderBrush" Value="{DynamicResource DarkBorder}" />
+    </Style>
+
+    <!-- TextBlock Style -->
+    <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="{DynamicResource DarkOnSurface}" />
+    </Style>
+
+    <!-- UserControl Style -->
+    <Style Selector="UserControl">
+        <Setter Property="Background" Value="{DynamicResource DarkBackground}" />
+        <Setter Property="Foreground" Value="{DynamicResource DarkOnBackground}" />
+    </Style>
+
+</Styles>

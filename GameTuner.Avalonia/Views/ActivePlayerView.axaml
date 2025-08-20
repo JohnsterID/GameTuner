@@ -1,0 +1,96 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:GameTuner.Avalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GameTuner.Avalonia.Views.ActivePlayerView"
+             x:DataType="vm:ActivePlayerViewModel"
+             Background="Black">
+
+    <ScrollViewer>
+        <StackPanel Margin="10" Spacing="10">
+            
+            <!-- Tech Controls Section -->
+            <StackPanel Orientation="Horizontal" Spacing="5">
+                <Button Content="Grant All Techs" Command="{Binding GrantAllTechsCommand}" />
+                <Button Content="Grant All Techs (All Players)" Command="{Binding GrantAllTechsAllPlayersCommand}" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Spacing="5">
+                <Button Content="Remove All Techs" Command="{Binding RemoveAllTechsCommand}" />
+                <Button Content="Remove All Techs (All Players)" Command="{Binding RemoveAllTechsAllPlayersCommand}" />
+            </StackPanel>
+
+            <!-- Era Tech Controls -->
+            <WrapPanel Orientation="Horizontal">
+                <Button Content="Ancient Era Techs" Margin="2" Command="{Binding AncientEraTechsCommand}" />
+                <Button Content="Classical Era Techs" Margin="2" Command="{Binding ClassicalEraTechsCommand}" />
+                <Button Content="Classical Era Techs (All Players)" Margin="2" Command="{Binding ClassicalEraTechsAllPlayersCommand}" />
+            </WrapPanel>
+            
+            <WrapPanel Orientation="Horizontal">
+                <Button Content="Medieval Era Techs" Margin="2" Command="{Binding MedievalEraTechsCommand}" />
+                <Button Content="Renaissance Era Techs" Margin="2" Command="{Binding RenaissanceEraTechsCommand}" />
+                <Button Content="Renaissance Era Techs (All Players)" Margin="2" Command="{Binding RenaissanceEraTechsAllPlayersCommand}" />
+            </WrapPanel>
+            
+            <WrapPanel Orientation="Horizontal">
+                <Button Content="Industrial Era Techs" Margin="2" Command="{Binding IndustrialEraTechsCommand}" />
+                <Button Content="Modern Era Techs" Margin="2" Command="{Binding ModernEraTechsCommand}" />
+                <Button Content="Future Era Techs" Margin="2" Command="{Binding FutureEraTechsCommand}" />
+                <Button Content="Future Era Techs (All Players)" Margin="2" Command="{Binding FutureEraTechsAllPlayersCommand}" />
+            </WrapPanel>
+
+            <!-- Resource Controls Section -->
+            <Border BorderThickness="1" BorderBrush="#404040" Padding="10" Margin="0,10">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Resources" FontWeight="Bold" FontSize="14" />
+                    
+                    <!-- Gold Control -->
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <TextBlock Text="Gold:" VerticalAlignment="Center" Width="80" />
+                        <TextBox Text="{Binding GoldAmount}" Width="100" />
+                        <Button Content="1000 Gold" Command="{Binding Add1000GoldCommand}" />
+                        <Button Content="Player 1 DoW" Command="{Binding Player1DoWCommand}" />
+                    </StackPanel>
+                    
+                    <!-- Culture and Faith -->
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <Button Content="1000 Culture" Command="{Binding Add1000CultureCommand}" />
+                        <Button Content="100 Faith" Command="{Binding Add100FaithCommand}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Research Controls Section -->
+            <Border BorderThickness="1" BorderBrush="#404040" Padding="10">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="Research" FontWeight="Bold" FontSize="14" />
+                    
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <TextBlock Text="Current Research ID:" VerticalAlignment="Center" Width="140" />
+                        <TextBox Text="{Binding CurrentResearchId}" Width="200" />
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <TextBlock Text="Research Progress:" VerticalAlignment="Center" Width="140" />
+                        <TextBox Text="{Binding ResearchProgress}" Width="200" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <!-- Building Controls Section -->
+            <StackPanel Orientation="Horizontal" Spacing="5">
+                <Button Content="Recall Building Maint" Command="{Binding RecallBuildingMaintCommand}" />
+            </StackPanel>
+
+            <!-- Action Controls Section -->
+            <StackPanel Orientation="Horizontal" Spacing="5">
+                <Button Content="Add One Tech" Command="{Binding AddOneTechCommand}" />
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</UserControl>
