@@ -4,22 +4,15 @@
     <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
-    <TargetFramework>net35</TargetFramework>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <LangVersion>3</LangVersion>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup>
     <ApplicationIcon>app.ico</ApplicationIcon>
     <RootNamespace>GameTuner</RootNamespace>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameTuner.Framework\GameTuner.Framework.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <!-- Include original .resx files with LogicalName to map to new namespace -->
@@ -33,8 +26,4 @@
       <LogicalName>GameTuner.CustomUI.resources</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
-  <PropertyGroup>
-    <!-- Disable automatic inclusion of .resx files to avoid duplicates -->
-    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
-  </PropertyGroup>
 </Project>
