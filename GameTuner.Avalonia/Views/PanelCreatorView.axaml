@@ -1,0 +1,19 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:GameTuner.Avalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GameTuner.Avalonia.Views.PanelCreatorView"
+             x:DataType="vm:PanelCreatorViewModel"
+             Background="Black">
+
+    <Grid>
+        <TextBlock Text="Panel Creator - Design your custom game tuning panels here"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="White"
+                   FontSize="16" />
+    </Grid>
+
+</UserControl>

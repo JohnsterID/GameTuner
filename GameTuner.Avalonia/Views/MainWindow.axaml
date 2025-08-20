@@ -1,0 +1,105 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:GameTuner.Avalonia.ViewModels"
+        xmlns:views="using:GameTuner.Avalonia.Views"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="944" d:DesignHeight="564"
+        x:Class="GameTuner.Avalonia.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="GameTuner"
+        Width="944" Height="564"
+        MinWidth="800" MinHeight="500">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <DockPanel>
+        <!-- Menu Bar -->
+        <Menu DockPanel.Dock="Top" Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New Panel" InputGesture="Alt+N" Command="{Binding NewPanelCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/panel_new.png" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Open Panel" InputGesture="Alt+O" Command="{Binding OpenPanelCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/panel_open.png" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Save Panel" InputGesture="Alt+S" Command="{Binding SavePanelCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/panel_save.png" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Save Panel _As..." Command="{Binding SavePanelAsCommand}"/>
+                <Separator/>
+                <MenuItem Header="E_xit" Command="{Binding ExitCommand}"/>
+            </MenuItem>
+            
+            <MenuItem Header="_Connection">
+                <MenuItem Header="_Change Connection" Command="{Binding ChangeConnectionCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/connection_change.png" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Force Disconnect" Command="{Binding ForceDisconnectCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/connection_disconnect.png" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Refresh Lua States" Command="{Binding RefreshLuaStatesCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/refresh.png" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="_Admin">
+                <MenuItem Header="_Edit Project Panels" Command="{Binding EditProjectPanelsCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/panel_edit.png" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About GameTuner..." Command="{Binding AboutCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/about.png" Width="16" Height="16"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <!-- Status Bar -->
+        <Border DockPanel.Dock="Bottom" 
+                Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" 
+                BorderBrush="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                BorderThickness="0,1,0,0"
+                Height="22">
+            <TextBlock Text="{Binding ConnectionStatus}" 
+                       VerticalAlignment="Center" 
+                       Margin="5,0" />
+        </Border>
+
+        <!-- Main Content Area - Tab Control -->
+        <TabControl x:Name="MainTabControl">
+            <TabItem Header="Lua Console">
+                <views:LuaConsoleView DataContext="{Binding LuaConsoleViewModel}" />
+            </TabItem>
+            <TabItem Header="Active Player">
+                <views:ActivePlayerView DataContext="{Binding ActivePlayerViewModel}" />
+            </TabItem>
+            <TabItem Header="* New Panel *">
+                <views:PanelCreatorView DataContext="{Binding PanelCreatorViewModel}" />
+            </TabItem>
+        </TabControl>
+    </DockPanel>
+
+</Window>

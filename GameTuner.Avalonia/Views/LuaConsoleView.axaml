@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:GameTuner.Avalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GameTuner.Avalonia.Views.LuaConsoleView"
+             x:DataType="vm:LuaConsoleViewModel"
+             Background="Black">
+
+    <DockPanel>
+        <!-- Console Toolbar -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="DarkGray" Height="30">
+            <Button Content="Clear" Margin="5,2" Padding="10,2" />
+            <Button Content="Execute" Margin="5,2" Padding="10,2" />
+            <Separator />
+            <TextBlock Text="Lua State:" VerticalAlignment="Center" Margin="5,0" Foreground="White" />
+            <ComboBox Width="150" Margin="5,2" VerticalAlignment="Center">
+                <ComboBoxItem Content="Global" IsSelected="True" />
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Command Input -->
+        <DockPanel DockPanel.Dock="Bottom" Background="DarkGray" Height="30">
+            <TextBlock DockPanel.Dock="Left" Text=">" VerticalAlignment="Center" 
+                       Margin="5,0" Foreground="White" FontFamily="Consolas" />
+            <TextBox x:Name="CommandInput" 
+                     Text="{Binding CommandInput}" 
+                     Background="Black" 
+                     Foreground="White" 
+                     FontFamily="Consolas"
+                     BorderThickness="0"
+                     Margin="0,2,5,2"
+                     VerticalAlignment="Center" />
+        </DockPanel>
+
+        <!-- Console Output -->
+        <ScrollViewer>
+            <TextBox x:Name="ConsoleOutput"
+                     Text="{Binding ConsoleOutput}"
+                     Background="Black"
+                     Foreground="White"
+                     FontFamily="Consolas"
+                     FontSize="12"
+                     IsReadOnly="True"
+                     BorderThickness="0"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto" />
+        </ScrollViewer>
+    </DockPanel>
+
+</UserControl>
