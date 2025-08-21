@@ -1,0 +1,96 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:GameTuner.Avalonia.ViewModels"
+        x:Class="GameTuner.Avalonia.Views.ConnectionDialog"
+        x:DataType="vm:ConnectionDialogViewModel"
+        Title="Connection Settings"
+        Width="400"
+        Height="250"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False"
+        Background="#FF2D2D30">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- IP Address -->
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="IP Address:" 
+                       Width="100" 
+                       VerticalAlignment="Center"
+                       Foreground="White"/>
+            <TextBox Text="{Binding IpAddress}" 
+                     Width="200"
+                     Background="#FF3F3F46"
+                     Foreground="White"
+                     BorderBrush="#FF007ACC"/>
+        </StackPanel>
+
+        <!-- Port -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="Port:" 
+                       Width="100" 
+                       VerticalAlignment="Center"
+                       Foreground="White"/>
+            <NumericUpDown Value="{Binding Port}" 
+                           Width="200"
+                           Minimum="1"
+                           Maximum="65535"
+                           Background="#FF3F3F46"
+                           Foreground="White"
+                           BorderBrush="#FF007ACC"/>
+        </StackPanel>
+
+        <!-- Auto Connect -->
+        <CheckBox Grid.Row="4" 
+                  Content="Auto-connect on startup"
+                  IsChecked="{Binding AutoConnect}"
+                  Foreground="White"/>
+
+        <!-- Connection Status -->
+        <StackPanel Grid.Row="6" Orientation="Horizontal">
+            <TextBlock Text="Status:" 
+                       Width="100" 
+                       VerticalAlignment="Center"
+                       Foreground="White"/>
+            <TextBlock Text="{Binding ConnectionStatus}" 
+                       Foreground="{Binding StatusColor}"
+                       VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="8" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    Spacing="10">
+            <Button Content="Test Connection" 
+                    Command="{Binding TestConnectionCommand}"
+                    Width="120"
+                    Height="30"
+                    Background="#FF007ACC"
+                    Foreground="White"/>
+            <Button Content="OK" 
+                    Command="{Binding OkCommand}"
+                    Width="80"
+                    Height="30"
+                    Background="#FF007ACC"
+                    Foreground="White"/>
+            <Button Content="Cancel" 
+                    Command="{Binding CancelCommand}"
+                    Width="80"
+                    Height="30"
+                    Background="#FF3F3F46"
+                    Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</Window>

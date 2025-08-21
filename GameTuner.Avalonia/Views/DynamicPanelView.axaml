@@ -1,0 +1,16 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:GameTuner.Avalonia.ViewModels"
+             xmlns:controls="using:GameTuner.Avalonia.Controls"
+             x:Class="GameTuner.Avalonia.Views.DynamicPanelView"
+             x:DataType="vm:DynamicPanelViewModel"
+             Background="#FF1E1E1E">
+
+    <ScrollViewer>
+        <TextBlock Text="{Binding Panel.PanelName, StringFormat='Panel: {0}'}" 
+                   Foreground="White" 
+                   Margin="10"
+                   FontSize="16"/>
+    </ScrollViewer>
+
+</UserControl>

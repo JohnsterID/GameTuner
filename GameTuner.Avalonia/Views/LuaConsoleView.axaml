@@ -10,42 +10,51 @@
 
     <DockPanel>
         <!-- Console Toolbar -->
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="DarkGray" Height="30">
-            <Button Content="Clear" Margin="5,2" Padding="10,2" />
-            <Button Content="Execute" Margin="5,2" Padding="10,2" />
-            <Separator />
-            <TextBlock Text="Lua State:" VerticalAlignment="Center" Margin="5,0" Foreground="White" />
-            <ComboBox Width="150" Margin="5,2" VerticalAlignment="Center">
-                <ComboBoxItem Content="Global" IsSelected="True" />
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="LightGray" Height="30">
+            <ComboBox Width="150" Margin="5,2" VerticalAlignment="Center"
+                      ItemsSource="{Binding LuaStates}"
+                      SelectedItem="{Binding SelectedLuaState}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
+            <Button Content="Clear Output" 
+                    Command="{Binding ClearConsoleCommand}"
+                    Margin="5,2" Padding="10,2" />
         </StackPanel>
 
         <!-- Command Input -->
-        <DockPanel DockPanel.Dock="Bottom" Background="DarkGray" Height="30">
+        <DockPanel DockPanel.Dock="Bottom" Background="DarkGray" Height="25" Margin="0">
             <TextBlock DockPanel.Dock="Left" Text=">" VerticalAlignment="Center" 
-                       Margin="5,0" Foreground="White" FontFamily="Consolas" />
+                       Margin="5,0,2,0" Foreground="White" FontFamily="Consolas" FontSize="12" />
             <TextBox x:Name="CommandInput" 
                      Text="{Binding CommandInput}" 
                      Background="Black" 
                      Foreground="White" 
                      FontFamily="Consolas"
-                     BorderThickness="0"
+                     FontSize="12"
+                     BorderThickness="1"
+                     BorderBrush="Gray"
                      Margin="0,2,5,2"
-                     VerticalAlignment="Center" />
+                     VerticalAlignment="Stretch"
+                     KeyDown="CommandInput_KeyDown" />
         </DockPanel>
 
         <!-- Console Output -->
-        <ScrollViewer>
+        <ScrollViewer Background="Black" BorderThickness="1" BorderBrush="Gray">
             <TextBox x:Name="ConsoleOutput"
                      Text="{Binding ConsoleOutput}"
                      Background="Black"
-                     Foreground="White"
+                     Foreground="Lime"
                      FontFamily="Consolas"
                      FontSize="12"
                      IsReadOnly="True"
                      BorderThickness="0"
                      TextWrapping="Wrap"
                      AcceptsReturn="True"
+                     Padding="5"
                      ScrollViewer.VerticalScrollBarVisibility="Auto" />
         </ScrollViewer>
     </DockPanel>
