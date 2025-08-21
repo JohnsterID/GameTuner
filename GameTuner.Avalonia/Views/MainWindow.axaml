@@ -18,7 +18,7 @@
 
     <DockPanel>
         <!-- Menu Bar -->
-        <Menu DockPanel.Dock="Top" Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}">
+        <Menu DockPanel.Dock="Top" Background="#FF2D2D30" BorderBrush="#FF3F3F46" BorderThickness="0,0,0,1">
             <MenuItem Header="_File">
                 <MenuItem Header="_New Panel" InputGesture="Alt+N" Command="{Binding NewPanelCommand}">
                     <MenuItem.Icon>
@@ -79,17 +79,19 @@
 
         <!-- Status Bar -->
         <Border DockPanel.Dock="Bottom" 
-                Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}" 
-                BorderBrush="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                Background="#FF2D2D30" 
+                BorderBrush="#FF3F3F46"
                 BorderThickness="0,1,0,0"
                 Height="22">
             <TextBlock Text="{Binding ConnectionStatus}" 
                        VerticalAlignment="Center" 
-                       Margin="5,0" />
+                       Margin="5,0"
+                       Foreground="White" />
         </Border>
 
         <!-- Main Content Area - Tab Control -->
-        <TabControl x:Name="MainTabControl">
+        <TabControl x:Name="MainTabControl" 
+                    Background="#FF1E1E1E">
             <!-- Always visible tabs -->
             <TabItem Header="Lua Console">
                 <views:LuaConsoleView DataContext="{Binding LuaConsoleViewModel}" />
@@ -100,34 +102,34 @@
                 <views:ActivePlayerView DataContext="{Binding ActivePlayerViewModel}" />
             </TabItem>
             <TabItem Header="Audio Logging" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Audio Logging - TODO: Implement" Margin="10" />
+                <TextBlock Text="Audio Logging - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             <TabItem Header="Audio" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Audio Controls - TODO: Implement" Margin="10" />
+                <TextBlock Text="Audio Controls - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             <TabItem Header="Game" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Game Controls - TODO: Implement" Margin="10" />
+                <TextBlock Text="Game Controls - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             <TabItem Header="Lua Mem Tracking" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Lua Memory Tracking - TODO: Implement" Margin="10" />
+                <TextBlock Text="Lua Memory Tracking - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             <TabItem Header="Map" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Map Controls - TODO: Implement" Margin="10" />
+                <TextBlock Text="Map Controls - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             <TabItem Header="Players" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Player Management - TODO: Implement" Margin="10" />
+                <TextBlock Text="Player Management - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             <TabItem Header="Selected City" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Selected City - TODO: Implement" Margin="10" />
+                <TextBlock Text="Selected City - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             <TabItem Header="Selected Unit" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Selected Unit - TODO: Implement" Margin="10" />
+                <TextBlock Text="Selected Unit - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             <TabItem Header="Table Browser" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Table Browser - TODO: Implement" Margin="10" />
+                <TextBlock Text="Table Browser - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             <TabItem Header="Network" IsVisible="{Binding IsConnected}">
-                <TextBlock Text="Network Controls - TODO: Implement" Margin="10" />
+                <TextBlock Text="Network Controls - TODO: Implement" Margin="10" Foreground="White"/>
             </TabItem>
             
             <!-- Always visible panel creator -->
